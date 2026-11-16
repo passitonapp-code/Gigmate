@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101014"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>GigMate — Find your next gig</title>
+<style>
+:root{color-scheme:dark;--bg:#101014;--panel:#1b1b22;--muted:#a4a4b2;--text:#f7f7fb;--pink:#ff4f91;--purple:#9b7cff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}header{padding:24px 20px 14px;max-width:760px;margin:auto}h1{font-size:29px;margin:0;font-weight:850;letter-spacing:-1px}h1 span{color:var(--pink)}.sub{color:var(--muted);margin:4px 0 0}.wrap{max-width:760px;margin:auto;padding:0 16px 100px}.hero{background:linear-gradient(130deg,#36204a,#1d1b2b 65%,#30203b);padding:22px;border-radius:22px;margin:10px 0 20px}.hero h2{font-size:24px;line-height:1.15;margin:0 0 8px}.hero p{margin:0;color:#ded8e8}.section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 12px}.section-title h2{font-size:19px;margin:0}.muted{color:var(--muted);font-size:13px}.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 12px}.chip{border:1px solid #3b3b47;background:#202029;color:#ddd;border-radius:30px;padding:8px 13px;white-space:nowrap}.chip.active{background:var(--pink);border-color:var(--pink);color:#160b11}.event{background:var(--panel);border:1px solid #292933;border-radius:18px;padding:15px;margin:10px 0;display:grid;grid-template-columns:72px 1fr;gap:13px}.date{background:#2a2032;border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#ff9bc0;font-weight:800}.date b{font-size:25px;line-height:1}.date small{font-size:11px;letter-spacing:1px}.event h3{margin:0 0 3px;font-size:17px}.event .meta{color:var(--muted);font-size:13px}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.tag{font-size:11px;color:#d9cfff;background:#302b43;padding:4px 8px;border-radius:20px}.actions{display:flex;gap:8px;margin-top:10px}.btn{border:0;border-radius:11px;padding:9px 12px;font-weight:700;background:var(--pink);color:#190c12}.btn.secondary{background:#30303b;color:#eee}.search{width:100%;background:#202029;border:1px solid #393945;border-radius:13px;padding:13px;color:white;font-size:15px}.nav{position:fixed;bottom:0;left:0;right:0;background:#17171dee;backdrop-filter:blur(16px);border-top:1px solid #333;display:flex;justify-content:center;z-index:5}.navin{max-width:760px;width:100%;display:flex;justify-content:space-around;padding:10px 4px calc(10px + env(safe-area-inset-bottom))}.nav button{background:none;border:0;color:#aaa;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px}.nav button strong{font-size:20px}.nav button.active{color:#ff70a6}.page{display:none}.page.active{display:block}.empty{color:var(--muted);text-align:center;padding:35px 10px}.crew{background:var(--panel);padding:16px;border-radius:16px;margin:10px 0}.crew h3{margin:0 0 5px}.foot{color:#858592;font-size:12px;text-align:center;margin:30px 0}
+</style></head>
+<body>
+<header><h1>Gig<span>Mate</span> ✦</h1><p class="sub">Good music. Great people. Better nights.</p></header>
+<main class="wrap">
+<section class="page active" id="for-you">
+<div class="hero"><h2>Your next favourite night starts here.</h2><p>Find gigs that fit your taste and get your crew together.</p></div>
+<div class="section-title"><h2>Picked for you</h2><span class="muted">DEMO EVENTS</span></div>
+<div class="filters"><button class="chip active" data-filter="All">All</button><button class="chip" data-filter="Rock">Rock</button><button class="chip" data-filter="Electronic">Electronic</button><button class="chip" data-filter="Indie">Indie</button><button class="chip" data-filter="Hip-hop">Hip-hop</button></div>
+<div id="events"></div>
+</section>
+<section class="page" id="discover"><div class="section-title"><h2>Discover gigs</h2></div><input id="search" class="search" placeholder="Search artists, venues or styles…"><div id="discover-events"></div></section>
+<section class="page" id="crew"><div class="section-title"><h2>Your crew</h2><span class="muted">MAKE A PLAN</span></div><div class="crew"><h3>Friday night crew</h3><p class="muted">Pick a gig, get everyone voting, and make a night of it.</p><button class="btn" onclick="alert('Crew invitations will be available when accounts are connected.')">Invite friends</button></div><div class="crew"><h3>How it works</h3><p class="muted">Save events you like, share your shortlist with friends, then decide together.</p></div></section>
+<section class="page" id="saved"><div class="section-title"><h2>Saved gigs</h2></div><div id="saved-events"></div></section>
+<p class="foot">GigMate prototype · Event listings are sample data, not live listings.</p>
+</main>
+<nav class="nav"><div class="navin"><button class="active" data-page="for-you"><strong>⌂</strong>For You</button><button data-page="discover"><strong>⌕</strong>Discover</button><button data-page="crew"><strong>♧</strong>Your Crew</button><button data-page="saved"><strong>♡</strong>Saved</button></div></nav>
+<script>
+const gigs=[
+{id:1,day:"21",month:"NOV",artist:"The Jungle Giants",venue:"The Tivoli · Brisbane",style:"Indie",desc:"Indie favourites bring the big hooks and big energy."},
+{id:2,day:"28",month:"NOV",artist:"Pendulum",venue:"Fortitude Music Hall · Brisbane",style:"Electronic",desc:"A high-energy electronic night with huge drops."},
+{id:3,day:"05",month:"DEC",artist:"Ocean Alley",venue:"Riverstage · Brisbane",style:"Rock",desc:"Sun-soaked psych rock under the open sky."},
+{id:4,day:"12",month:"DEC",artist:"Hilltop Hoods",venue:"The Fortitude Music Hall · Brisbane",style:"Hip-hop",desc:"Australian hip-hop legends live."}
+];
+let saved=JSON.parse(localStorage.getItem('gigmate-saved')||'[]'),filter='All';
+function card(g){return `<article class="event"><div class="date"><b>${g.day}</b><small>${g.month}</small></div><div><h3>${g.artist}</h3><div class="meta">${g.venue}</div><div class="tags"><span class="tag">${g.style}</span><span class="tag">Sample listing</span></div><div class="meta">${g.desc}</div><div class="actions"><button class="btn" onclick="toggleSave(${g.id})">${saved.includes(g.id)?'♥ Saved':'♡ Save gig'}</button><button class="btn secondary" onclick="shareGig(${g.id})">Share</button></div></div></article>`}
+function render(){document.getElementById('events').innerHTML=gigs.filter(g=>filter==='All'||g.style===filter).map(card).join('');document.getElementById('discover-events').innerHTML=gigs.filter(g=>(g.artist+' '+g.venue+' '+g.style).toLowerCase().includes((document.getElementById('search').value||'').toLowerCase())).map(card).join('');let list=gigs.filter(g=>saved.includes(g.id));document.getElementById('saved-events').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No saved gigs yet. Save an event to keep it here.</div>'}
+function toggleSave(id){saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];localStorage.setItem('gigmate-saved',JSON.stringify(saved));render()}
+function shareGig(id){let g=gigs.find(x=>x.id===id);if(navigator.share)navigator.share({title:g.artist,text:`${g.artist} — ${g.venue}`});else alert(`${g.artist} — ${g.venue}`)}
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()});
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===b.dataset.page));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x===b))});
+document.getElementById('search').addEventListener('input',render);render();
+</script>
+</body></html>
